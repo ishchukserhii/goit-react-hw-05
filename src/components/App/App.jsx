@@ -1,7 +1,7 @@
 
 import { Route, Routes } from 'react-router';
 
-import Header from "../Header/Header"
+import Navigation from "../Navigation/Navigation"
 import HomePage from "../../pages/HomePage"
 import MoviesPage from "../../pages/MoviesPage"
 import MovieDetailsPage from "../../pages/MovieDetailsPage"
@@ -14,7 +14,7 @@ import NotFoundPage from "../../pages/NotFoundPage"
 function App() {
   return (
 <div>
-<Header/>
+<Navigation/>
 
 <Routes>
         <Route path="/" element={<HomePage />} />

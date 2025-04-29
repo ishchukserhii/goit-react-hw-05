@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { NavLink, Outlet, useParams } from "react-router";
 import { getFilmById } from "../search";
 
 const MovieDetailsPage = () => {
@@ -43,6 +43,18 @@ const MovieDetailsPage = () => {
                 <li key={ganres.id}>{ganres.name}</li>
               ))}
             </ul>
+          </div>
+          <div>
+            <h3>Additional information.</h3>
+            <ul>
+        <li>
+          <NavLink to="cast">Cast</NavLink>
+        </li>
+        <li>
+          <NavLink to="reviews">Reviews</NavLink>
+        </li>
+      </ul>
+      <Outlet />
           </div>
         </div>
       )}
