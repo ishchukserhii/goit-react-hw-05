@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, Outlet, useParams } from "react-router";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, NavLink, Outlet, useLocation, useParams } from "react-router";
 import { getFilmById } from "../search";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
+  const location = useLocation()
+const backLink = useRef(location.state)
 
   const [response, setResponse] = useState(null);
 
@@ -19,8 +21,14 @@ const MovieDetailsPage = () => {
     getData();
   }, [movieId]);
 
+
+
+
+
+
   return (
     <>
+    <Link to={backLink.current || "/movies"} className="link-back">← Go back</Link>
       {response && (
         <div className="movie-details-container">
           <div className="movie-poster">

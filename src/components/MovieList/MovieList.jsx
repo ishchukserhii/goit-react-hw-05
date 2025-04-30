@@ -1,36 +1,18 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
-import { Api } from "../../search";
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
 
-const MovieList = () => {
-
-    const[response, setResponse] = useState([])
-
-    useEffect(() => {
-      async function getData() {
-        try{
-  const data = await Api()
-  setResponse(data.results)
-        }
-        catch{
-          console.error("Помилка під час отримання даних:", error);
-        }
-      }
-      getData()
-    },[])
+const MovieList = ({films}) => {
+const location = useLocation()
 
     
   return (
     <div>
-    <h2>Trending today</h2>
-    
     <ul >
-  {response.map((film)=> (
+  {films.map((film)=> (
 
       <li key={film.id} >
-        <Link to={`/movies/${film.id}`} >{film.title}</Link>
+        <Link to={`/movies/${film.id}`} state={location}>{film.title}</Link>
         </li>))}
     </ul>
     </div>

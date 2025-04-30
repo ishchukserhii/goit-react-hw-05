@@ -19,7 +19,7 @@ const [response, setResponse] = useState(null);
     getData();
   }, [movieId]);
 
-console.log(response)
+
 
   return (
     response && (
