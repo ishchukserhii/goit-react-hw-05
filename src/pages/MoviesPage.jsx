@@ -37,7 +37,9 @@ const [error, setError] = useState(false);
         setFilms(data.results);
       } catch {
         setError(true);
-      } 
+      } finally{
+        setIsLoading(false);
+      }
     }
 
     getFilms();
