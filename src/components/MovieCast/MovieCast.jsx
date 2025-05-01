@@ -7,6 +7,7 @@ const MovieCast = () => {
 const { movieId } = useParams();
 const [response, setResponse] = useState(null);
 
+
   useEffect(() => {
     async function getData() {
       try {

@@ -37,9 +37,7 @@ const [error, setError] = useState(false);
         setFilms(data.results);
       } catch {
         setError(true);
-      } finally {
-        setIsLoading(false);
-      }
+      } 
     }
 
     getFilms();
@@ -49,6 +47,8 @@ const [error, setError] = useState(false);
   return (
     <div>
       <input type='text' value={query} onChange={changeSearchText}></input>
+      {isLoading && <b>Loading films...</b>}
+      {error && <b>Whoops there was an error, plz reload the page...</b>}
       {films.length>0 && <MovieList films={films}/>}
     </div>
   )

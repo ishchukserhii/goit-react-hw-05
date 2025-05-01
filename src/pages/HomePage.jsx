@@ -4,15 +4,23 @@ import { Api } from '../search';
 
 const HomePage = () => {
   const[response, setResponse] = useState([])
+const [isLoading, setIsLoading] = useState(false);
+const [error, setError] = useState(false);
+
 
   useEffect(() => {
     async function getData() {
       try{
+        setIsLoading(true);
+        setError(false);
 const data = await Api()
 setResponse(data.results)
       }
       catch{
-        console.error("Помилка під час отримання даних:", error);
+        setError(true);
+      }
+      finally{
+        setIsLoading(false);
       }
     }
     getData()
@@ -24,6 +32,8 @@ setResponse(data.results)
     <>
     <h2>Trending today</h2>
 <MovieList films={response}/>
+{isLoading && <b>Loading users...</b>}
+{error && <b>Whoops there was an error, plz reload the page...</b>}
 </>
   )
 }

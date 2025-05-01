@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {Suspense, useEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation, useParams } from "react-router";
 import { getFilmById } from "../search";
+
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -62,7 +63,11 @@ const backLink = useRef(location.state)
           <NavLink to="reviews">Reviews</NavLink>
         </li>
       </ul>
+      <Suspense fallback={ <p>
+                  <b>Loading ...</b>
+                </p>}>
       <Outlet />
+      </Suspense>
           </div>
         </div>
       )}
